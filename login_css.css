@@ -1,0 +1,83 @@
+body{
+	margin: 0px;
+	font-family: 'Titillium Web', sans-serif;
+	background-color: rgb(0, 0, 0);
+	background-image: url("https://i.gifer.com/BXe0.gif");
+	background-repeat : repeat;
+    background-attachment: fixed;
+    background-position: center;
+	background-size: 1500px 700px;
+}
+
+.forms-out {
+    margin: 0 auto;
+    font-family: 'Garamond', serif;
+    font-weight: bold;
+    padding: 40px 0;
+    font-size: 20px;
+    }
+    
+    
+    .forms-in {
+    width: 93%;
+    margin: 0 auto;
+    color: white;
+    padding: 100px 0;
+    font-size: 30px;
+    font-family: 'Garamond', serif;
+    }
+    
+    .forms-in div {
+        justify-content: center;
+    padding: 50px 30px;
+    max-width: 350px;
+    margin: 0 auto;
+    background: hsl(180, 44%, 52%);
+    border-radius: 5px;
+    margin-bottom: 55px;
+    font-size: 20px;
+    }
+    
+    .forms-in h3 {
+    text-align: center;
+    padding-right: 20px;
+    font-size: 30px;
+    }
+    
+    .forms-in input {
+    border: none;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    }
+    
+    .forms-in button {
+    border: none;
+    padding: 20px 20px;
+    background: #e8f8ff;
+    color: #168ab8;
+    border-radius: 4px;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    }
+    
+    .forms-in button:hover {
+    opacity: 0.7;
+    }
+    
+    .hide {
+    display: none;
+    }
+    
+    #forgot-password {
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+    }
+    
+    #forgot-password:hover {
+    opacity: 0.7;
+    }

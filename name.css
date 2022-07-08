@@ -1,0 +1,74 @@
+body{
+	margin: 0px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+    background-image: url("https://acumbamail.com/blog/wp-content/uploads/2015/06/ventajas-gif-email.gif");
+	background-repeat : repeat;
+    background-attachment: fixed;
+    background-position: center;
+	background-size: 1500px 700px;
+}
+.main{
+	background-color: rgba(134, 164, 207, 0.6);
+    position: absolute;
+    padding: 50px 40px 40px 40px;
+	top: 50%;
+	left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 40px;
+}
+h1{
+    font-size: 62px;
+    padding: 0px;
+    margin: 0px;
+}
+p{
+    padding: 0px;
+    margin: 0px;
+    padding-left: 40px;
+}
+#name{
+    border: center;
+    height: 60px;
+    width: 600px;
+    font-size: 36px;
+    font-weight: 900;
+    color: rgba(0,0,0,.6);
+    
+}
+#read{
+    font-size: 29px;
+}
+#but{
+    border: none;
+    border-radius: 38px;
+    padding: 5px 30px;
+    background-color: rgb(14, 30, 59);
+    color: white;
+    font-size: 38px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+button{
+    font-family: 'Titillium Web', sans-serif;
+    margin-bottom: 10px; 
+    margin-right: 50px;
+    width: 250px;
+    background-color: rgb(46, 184, 46);
+    border: none;
+    border-radius: 30px;
+    padding-left: 50px;
+    color: rgb(64, 92, 124);
+    font-size: 36px;
+    box-shadow: 5px 5px 10px rgba(166, 166, 166,.75);
+    cursor: pointer;
+    padding: 0px 20px;
+    
+}
+h2{
+    text-align: center;
+    padding: 0px 0px 30px 0px;
+    margin: 0px;
+    font-size: 50px;
+}

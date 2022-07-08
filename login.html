@@ -1,0 +1,208 @@
+<html>
+    <head>
+        <title>Login | Quizly</title>
+
+        <link rel="stylesheet" href="login_css.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web:900" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+        <script src="code.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="forms-out">
+                <div class="forms-in">
+                  <div id="registration-page" class="hide">
+                    <button id="show-login">Sign In</button>
+                    <h3>Sign Up</h3>
+                    Email <br />
+                    <input type="email" id="registration-email" /><br />
+                    Confirm Email <br />
+                    <input
+                    type="email"
+                    id="registration-reemail"
+                    autocomplete="disable"
+                    /><br />
+                    Password <br />
+                    <input type="password" id="registration-password" /><br />
+                    <center><button id="register">Sign Up</button></center>
+                  </div>
+            
+                  <div id="login-page">
+                    <button id="show-register">Sign Up</button>
+                    <h3>Sign In</h3>
+                    Email <br />
+                    <input type="email" id="login-email" /><br />
+                    Password <br />
+                    <input type="password" id="login-password" /><br />
+                    <p id="forgot-password">Forgot Password</p>
+                    <center><button id="login">Sign In</button></center>
+                </div>
+          
+                <div id="homepage" class="hide">
+                  <button id="signout">Sign Out</button>
+                  <h3>Logged In</h3>
+                  <div id="now"><a href="name.html" id="play_a"><button id="play">PROCEED</button></a></div>
+                </div>
+              </div>
+            
+                  
+                </div>
+            </div>
+            </div>
+     </body>
+     <script>
+     //invokes firebase authentication. 
+
+const auth = firebase.auth();
+ document.querySelector("#show-register").addEventListener("click", () => {
+showRegistration();
+});
+
+const showRegistration = () => {
+document.querySelector("#registration-page").classList.remove("hide");
+document.querySelector("#login-page").classList.add("hide");
+document.querySelector("#homepage").classList.add("hide");
+};
+
+document.querySelector("#show-login").addEventListener("click", () => {
+showLogin();
+});
+
+const showLogin = () => {
+document.querySelector("#registration-page").classList.add("hide");
+document.querySelector("#login-page").classList.remove("hide");
+document.querySelector("#homepage").classList.add("hide");
+};
+
+document.querySelector("#signout").addEventListener("click", () => {
+signOut();
+});
+
+const register = () => {
+const email = document.querySelector("#registration-email").value;
+const reemail = document.querySelector("#registration-reemail").value;
+const password = document.querySelector("#registration-password").value;
+
+if (email.trim() == "") {
+    alert("Enter Email");
+} else if (password.trim().length < 7) {
+    alert("Password must be at least 7 characters");
+} else if (email != reemail) {
+    alert("emails do not match");
+} else {
+    auth
+    .createUserWithEmailAndPassword(email, password)
+    .catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage);
+        // ...
+    });
+}
+};
+
+document.querySelector("#register").addEventListener("click", () => {
+register();
+});
+
+//register when you hit the enter key
+document
+.querySelector("#registration-password")
+.addEventListener("keyup", (e) => {
+    if (event.keyCode === 13) {
+    e.preventDefault();
+
+    register();
+    }
+});
+
+const login = () => {
+const email = document.querySelector("#login-email").value;
+const password = document.querySelector("#login-password").value;
+
+if (email.trim() == "") {
+    alert("Enter Email");
+} else if (password.trim() == "") {
+    alert("Enter Password");
+} else {
+    authenticate(email, password);
+}
+};
+
+document.querySelector("#login").addEventListener("click", () => {
+login();
+});
+
+//sign in when you hit enter
+document
+.querySelector("#login-password")
+.addEventListener("keyup", (e) => {
+    if (event.keyCode === 13) {
+    e.preventDefault();
+    login();
+    }
+});
+
+const authenticate = (email, password) => {
+const auth = firebase.auth();
+auth.signInWithEmailAndPassword(email, password);
+firebase.auth()
+    .signInWithEmailAndPassword(email, password)
+    .catch(function (error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    alert(errorMessage);
+    });
+};
+
+const showHomepage = () => {
+  document.querySelector("#registration-page").classList.add("hide");
+  document.querySelector("#login-page").classList.add("hide");
+  document.querySelector("#homepage").classList.remove("hide");
+};
+
+const signOut = () => {
+firebase
+    .auth()
+    .signOut()
+    .then(function () {
+    location.reload();
+    })
+    .catch(function (error) {
+    alert("error signing out, check network connection");
+    });
+};
+
+auth.onAuthStateChanged((firebaseUser) => {
+if (firebaseUser) {
+    showHomepage();
+}
+});
+
+document
+.querySelector("#forgot-password")
+.addEventListener("click", () => {
+    const email = document.querySelector("#login-email").value;
+    if (email.trim() == "") {
+    alert("Enter Email");
+    } else {
+    forgotPassword(email);
+    }
+});
+
+const forgotPassword = (email) => {
+auth
+    .sendPasswordResetEmail(email)
+    .then(function () {
+    alert("email sent");
+    })
+    .catch(function (error) {
+    alert("invalid email or bad network connection");
+    });
+};
+</script>
+
+</html>
