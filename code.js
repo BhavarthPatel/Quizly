@@ -94,7 +94,7 @@ function result(){
 	for (var i = 0 ; i < data.length ; i++) {
 		if (currectAns[i] == "1") {
 			currect++;
-			score += 10;
+			score += 2;
 		}
 		if (currectAns[i] == "-1") {
 			wrong++;
